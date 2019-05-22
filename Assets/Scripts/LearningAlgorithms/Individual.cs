@@ -65,9 +65,12 @@ public abstract class Individual {
 
 	}
 
+    public float [] getGenotype(){
+        return genotype;
+    }
 
-	//override on each specific individual class
-	public abstract void Initialize ();
+    //override on each specific individual class
+    public abstract void Initialize ();
 	public abstract void Mutate (float probability);
 	public abstract void Crossover (Individual partner, float probability);
 	public abstract Individual Clone ();

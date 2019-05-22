@@ -5,23 +5,43 @@ using UnityEngine;
 public class GeneticIndividual : Individual {
 
 
-	GeneticIndividual(int[] topology) : base(topology) {
+	public GeneticIndividual(int[] topology) : base(topology) {
 	}
 
 	public override void Initialize () 
 	{
-		throw new System.NotImplementedException ();
-	}
+        for (int i = 0; i < totalSize; i++)
+        {
+            genotype[i] = Random.Range(-1.0f, 1.0f);
+        }
+    }
 		
 	public override void Crossover (Individual partner, float probability)
 	{
-		throw new System.NotImplementedException ();
-	}
+        if (Random.Range(0.0f,1.0f)<probability) {
+            int min = Random.Range(0,totalSize-1);
+            int max = Random.Range(min, totalSize - 1);
+            float[] partnerGenotype = partner.getGenotype();
+            for (int i = 0;i<totalSize;i++) {
+                if (i>=min && i<=max) {
+                    genotype[i] = partnerGenotype[i];
+                }
+            }
+
+        }
+        //throw new System.NotImplementedException();
+    }
 
 	public override void Mutate (float probability)
 	{
-		throw new System.NotImplementedException ();
-	}
+        for (int i = 0; i < totalSize; i++)
+        {
+            if (Random.Range(0.0f, 1.0f) < probability)
+            {
+                genotype[i] = Random.Range(-1.0f, 1.0f);
+            }
+        }
+    }
 
 	public override Individual Clone ()
 	{

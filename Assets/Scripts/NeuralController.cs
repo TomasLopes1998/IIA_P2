@@ -162,9 +162,6 @@ public class NeuralController : MonoBehaviour
                 //break;
             }
         }
-
-
-
     }
 
 
