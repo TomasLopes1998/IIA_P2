@@ -11,8 +11,9 @@ public class SelectByTorneio : SelectionMethod
         int i = 0, index = 0;
         float best =0;
         while (i < num) {
-            index = Random.Range(0,oldpop.Count-1);
+            index = Random.Range(0, oldpop.Count-1);
             individualsToEval.Add(oldpop[index]);
+            i++;
         }
         individualToReturn = individualsToEval[0];
         for (i=0;i<num;i++) {
@@ -21,7 +22,9 @@ public class SelectByTorneio : SelectionMethod
                 individualToReturn = individualsToEval[i];
             }
         }
-        
+        if (individualToReturn == null) {
+            Debug.Log("Why?");
+        }
         return individualToReturn;
     }
 }

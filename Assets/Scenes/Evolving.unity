@@ -323,7 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoText: {fileID: 812458883}
   simulating: 0
-  simulationPrefab: {fileID: 9123027176374597434, guid: d149e97bd0cef46c2acc87136e978d12,
+  simulationPrefab: {fileID: 7817105169101141572, guid: bd01af788228c4345b88f3a7069a4d67,
     type: 3}
   nSims: 20
   seed: 1
@@ -356,13 +356,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   populationSize: 30
   topology: 0f0000001400000002000000
-  numGenerations: 0
+  numGenerations: 3
   generation: 0
   logFilename: 
-  mutationProbability: 0
-  crossoverProbability: 0
-  tournamentSize: 0
-  elitist: 0
+  mutationProbability: 0.2
+  crossoverProbability: 0.5
+  tournamentSize: 3
+  elitist: 1
+  n_elit: 3
 --- !u!114 &1140463232
 MonoBehaviour:
   m_ObjectHideFlags: 0

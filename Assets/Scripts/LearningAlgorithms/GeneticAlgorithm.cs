@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GeneticAlgorithm : MetaHeuristic {
 	public float mutationProbability;
-    public SelectionMethod select;
+    public SelectionMethod select = new SelectByTorneio();
 	public float crossoverProbability;
 	public int tournamentSize;
 	public bool elitist;
@@ -27,17 +27,20 @@ public class GeneticAlgorithm : MetaHeuristic {
         int nIndividualcreated = 0;
         List<Individual> newPopulation = new List<Individual>();
         if (elitist) {
-            population.Sort();
+            Individual best = GenerationBest;
             int i = 0;
             for (i = 0; i < n_elit;i++)
             {
-                newPopulation.Add(population[i]);
+                best = GenerationBest;
+                newPopulation.Add(best);
                 nIndividualcreated++;
+                population.Remove(best);
             }
         }
-        while (nIndividualcreated < populationSize) {
-            Individual n1 = select.selectIndividuals(population, tournamentSize);
-            Individual n2 = select.selectIndividuals(population, tournamentSize);
+        while (nIndividualcreated < populationSize)
+        {
+            Individual n1 = NewMethod();
+            Individual n2 = NewMethod();
             Individual f1 = n1.Clone();
             Individual f2 = n2.Clone();
             f1.Crossover(f2, crossoverProbability);
@@ -46,11 +49,18 @@ public class GeneticAlgorithm : MetaHeuristic {
             f2.Mutate(mutationProbability);
             newPopulation.Add(f1);
             nIndividualcreated++;
-            if (nIndividualcreated<populationSize) {
+            if (nIndividualcreated < populationSize)
+            {
                 newPopulation.Add(f2);
+                nIndividualcreated++;
             }
         }
         population = newPopulation;
+        generation++;
     }
 
+    private Individual NewMethod()
+    {
+        return select.selectIndividuals(population, tournamentSize);
+    }
 }
