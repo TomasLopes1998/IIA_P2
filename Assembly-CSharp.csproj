@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\LearningAlgorithms\Individual.cs" />
     <Compile Include="Assets\Scripts\LearningAlgorithms\MetaHeuristic.cs" />
     <Compile Include="Assets\Scripts\LearningAlgorithms\NeuralNetwork.cs" />
+    <Compile Include="Assets\Scripts\LearningAlgorithms\SelectByTorneio.cs" />
     <Compile Include="Assets\Scripts\LearningAlgorithms\SelectionMethod.cs" />
     <Compile Include="Assets\Scripts\NeuralController.cs" />
     <Compile Include="Assets\Scripts\ScoreKeeper.cs" />
