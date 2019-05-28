@@ -18,9 +18,14 @@ public class GeneticIndividual : Individual {
 		
 	public override void Crossover (Individual partner, float probability)
 	{
-        if (Random.Range(0.0f,1.0f)<probability) {
-            int min = Random.Range(0,totalSize-1);
-            int max = Random.Range(min, totalSize - 1);
+        if (Random.Range(0.0f,1.0f) <= probability) {
+            int min = Random.Range(0, totalSize-1);
+            int max = Random.Range(0, totalSize-1);
+            if (min>max) {
+                int temp = min;
+                min = max;
+                max = temp;
+            }
             float[] partnerGenotype = partner.getGenotype();
             for (int i = 0;i<totalSize;i++) {
                 if (i>=min && i<=max) {
@@ -36,7 +41,7 @@ public class GeneticIndividual : Individual {
 	{
         for (int i = 0; i < totalSize; i++)
         {
-            if (Random.Range(0.0f, 1.0f) < probability)
+            if (Random.Range(0.0f, 1.0f) <= probability)
             {
                 genotype[i] = Random.Range(-1.0f, 1.0f);
             }

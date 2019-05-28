@@ -39,10 +39,10 @@ public class NeuralController : MonoBehaviour
 	public float maxSpeed = 0.0f;
     public float currentSpeed = 0.0f;
 	public float currentDistance = 0.0f;
-    public int hitTheBall; 
-	//
+    public int hitTheBall;
+    //
 
-	
+
 
     public float maxSimulTime = 1200;
     public bool GameFieldDebugMode = false;
@@ -187,10 +187,41 @@ public class NeuralController : MonoBehaviour
 
     }
 
+
+    /*public float distanceToBall;
+    public float distanceToMyGoal;
+    public float distanceToAdversaryGoal;
+    public float distanceToAdversary;
+    public float distancefromBallToAdversaryGoal;
+    public float distancefromBallToMyGoal;
+    public float driveTime = 0;
+	public float distanceTravelled = 0.0f;
+	public float avgSpeed = 0.0f;
+	public float maxSpeed = 0.0f;
+    public float currentSpeed = 0.0f;
+	public float currentDistance = 0.0f;
+    public int hitTheBall; 
+	//
+
+	
+
+    public float maxSimulTime = 1200;
+    public bool GameFieldDebugMode = false;
+    public bool gameOver = false;
+    public bool running = false;
+
+    public int GoalsOnAdversaryGoal;
+    public int GoalsOnMyGoal;
+    */
 	public float GetScore() {
         // Fitness function. The code to attribute fitness to individuals should be written here.  
-        float fitness = driveTime * distanceTravelled;
-        return fitness;
+        float fitness = 0;
+        fitness =  (GoalsOnAdversaryGoal-GoalsOnMyGoal) *10;
+        fitness +=  (1000/distanceToBall);
+        fitness += distanceTravelled/100;
+        fitness += hitTheBall;
+
+        return fitness; 
 	}
 
 
@@ -207,3 +238,4 @@ public class NeuralController : MonoBehaviour
 
 
 }
+ 

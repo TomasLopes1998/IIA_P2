@@ -32,6 +32,7 @@ public class GeneticAlgorithm : MetaHeuristic {
             for (i = 0; i < n_elit;i++)
             {
                 best = GenerationBest;
+                best.Mutate(mutationProbability);
                 newPopulation.Add(best);
                 nIndividualcreated++;
                 population.Remove(best);
@@ -43,8 +44,8 @@ public class GeneticAlgorithm : MetaHeuristic {
             Individual n2 = NewMethod();
             Individual f1 = n1.Clone();
             Individual f2 = n2.Clone();
-            f1.Crossover(f2, crossoverProbability);
-            f2.Crossover(f1, crossoverProbability);
+            f1.Crossover(n2, crossoverProbability);
+            f2.Crossover(n1, crossoverProbability);
             f1.Mutate(mutationProbability);
             f2.Mutate(mutationProbability);
             newPopulation.Add(f1);
@@ -54,6 +55,10 @@ public class GeneticAlgorithm : MetaHeuristic {
                 newPopulation.Add(f2);
                 nIndividualcreated++;
             }
+            else {
+                break;
+            }
+        
         }
         population = newPopulation;
         generation++;

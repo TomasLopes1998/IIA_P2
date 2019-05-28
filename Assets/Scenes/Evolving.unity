@@ -326,7 +326,7 @@ MonoBehaviour:
   simulationPrefab: {fileID: 7817105169101141572, guid: bd01af788228c4345b88f3a7069a4d67,
     type: 3}
   nSims: 20
-  seed: 1
+  seed: 1982
   Thetimescale: 8
 --- !u!4 &1140463230
 Transform:
@@ -354,13 +354,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d21771eeeb74e52884a6be78b317d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  populationSize: 30
+  populationSize: 20
   topology: 0f0000001400000002000000
-  numGenerations: 3
+  numGenerations: 50
   generation: 0
   logFilename: 
-  mutationProbability: 0.2
-  crossoverProbability: 0.5
+  mutationProbability: 0.01
+  crossoverProbability: 0.6
   tournamentSize: 3
   elitist: 1
   n_elit: 3
